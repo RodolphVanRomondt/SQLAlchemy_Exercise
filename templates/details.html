@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %} User {% endblock %}
+{% block heading %} User Details {% endblock %}
+{% block body %}
+
+<p>{{ user.first_name}} {{user.last_name}}</p>
+
+<button><a href="/users/{{ user.id }}/edit">Edit</a></button>
+<button><a href="/users/{{ user.id }}/delete">Delete</a></button>
+
+{% endblock %}
