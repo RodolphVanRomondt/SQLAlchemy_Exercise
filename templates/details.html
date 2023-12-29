@@ -3,9 +3,16 @@
 {% block heading %} User Details {% endblock %}
 {% block body %}
 
-<p>{{ user.first_name}} {{user.last_name}}</p>
 
-<button><a href="/users/{{ user.id }}/edit">Edit</a></button>
-<button><a href="/users/{{ user.id }}/delete">Delete</a></button>
+<div class="photo-profile">
+    <img src="{{ user.image_url }}">
+</div>
+
+<div class="text-profile">
+    <h2>{{ user.first_name}} {{user.last_name}}</h2>
+    
+    <button><a href="/users/{{ user.id }}/edit">Edit</a></button>
+    <button><a href="/users/{{ user.id }}/delete">Delete</a></button>
+</div>
 
 {% endblock %}

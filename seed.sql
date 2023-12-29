@@ -16,6 +16,6 @@ CREATE TABLE users (
 
 INSERT INTO users (first_name, last_name, image_url)
 VALUES
-  ('Rodolph', 'Van Romondt', 'www.google.com'),
-  ('Colt', 'Steele', 'www.google.com'),
-  ('David', 'Adewole', 'www.google.com');
+  ('Colt', 'Steele', 'https://images.unsplash.com/photo-1628563694622-5a76957fd09c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+  ('Rodolph', 'Van Romondt', 'https://lh3.googleusercontent.com/a/ACg8ocKCaB0i3DZctm3GL57I9ywQnnNe4nL_ix9mM8WBdubKIvE=s324-c-no'),
+  ('David', 'Adewole', 'https://cdn.vectorstock.com/i/1000x1000/15/40/blank-profile-picture-image-holder-with-a-crown-vector-42411540.webp');

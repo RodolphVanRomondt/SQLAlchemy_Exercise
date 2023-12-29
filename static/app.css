@@ -1,0 +1,26 @@
+body {
+    margin: 25px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.photo-profile, .text-profile {
+    position: absolute;
+}
+
+.text-profile {
+    left: 200px;
+    top: 11rem;
+}
+
+.photo-profile, img {
+    width: 150px;
+    height: 150px;
+    border-radius: 0.3rem;
+}

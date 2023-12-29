@@ -20,28 +20,14 @@ class User(db.Model):
                    primary_key=True,
                    autoincrement=True)
     
-    first_name = db.Column(db.String(50),
-                     nullable=False,
-                     unique=True)
+    first_name = db.Column(db.String(20),
+                     nullable=False)
     
-    last_name = db.Column(db.String(50),
-                     nullable=False,
-                     unique=True)
+    last_name = db.Column(db.String(20),
+                     nullable=False)
     
-    image_url = db.Column(db.String(50),
-                     nullable=False,
-                     unique=True)
-
-    def greet(self):
-        """Greet using name."""
-
-        return f"I'm {self.name} the {self.species or 'thing'}"
-
-    def feed(self, units=10):
-        """Nom nom nom."""
-
-        self.hunger -= units
-        self.hunger = max(self.hunger, 0)
+    image_url = db.Column(db.String(70),
+                     nullable=False)
 
     def __repr__(self):
         """Show info about user."""
