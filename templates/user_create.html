@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Create User {% endblock %}
+{% block heading %} Create a User {% endblock %}
+{% block body %}
+
+<form action="/users/new" method="POST">
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+        <input name="first_name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+        <input name="last_name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Image URL</span>
+        <input name="image_url" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <a href="/users"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+    <button class="btn btn-primary btn-sm">Add</button>
+</form>
+
+{% endblock %}

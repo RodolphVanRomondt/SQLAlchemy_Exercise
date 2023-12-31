@@ -16,18 +16,12 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    id = db.Column(db.Integer,
-                   primary_key=True,
-                   autoincrement=True)
-    
-    first_name = db.Column(db.String(20),
-                     nullable=False)
-    
-    last_name = db.Column(db.String(20),
-                     nullable=False)
-    
-    image_url = db.Column(db.String(70),
-                     nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    first_name = db.Column(db.String(20), nullable=False)
+    last_name = db.Column(db.String(20), nullable=False)
+    image_url = db.Column(db.String(70), nullable=False)
+
+    posts = db.relationship("Post")
 
     def __repr__(self):
         """Show info about user."""
@@ -40,3 +34,27 @@ class User(db.Model):
         """Delete a User."""
 
         return cls.query.filter(User.id == user_id).delete()
+    
+class Post(db.Model):
+    """ Post. """
+
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.Text, unique=True, nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    user = db.relationship("User")
+
+    def __repr__(self):
+        """ Show info about post """
+
+        p = self
+        return f"<Post: {p.id} Title: {p.title} UserID: {p.user_id}>"
+    
+    @classmethod
+    def delete_post(cls, post_id):
+        """Delete a Post."""
+
+        return cls.query.filter(Post.id == post_id).delete()

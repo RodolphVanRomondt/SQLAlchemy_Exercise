@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} User {% endblock %}
+{% block heading %} User Details {% endblock %}
+{% block body %}
+
+
+<div class="photo-profile">
+    <img src="{{ user.image_url }}">
+</div>
+
+<div class="text-profile">
+    <h2>{{ user.first_name}} {{user.last_name}}</h2>
+    
+    <a href="/users/{{ user.id }}/edit"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+    <a href="/users/{{ user.id }}/delete"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+</div>
+
+<div class="posts">
+    <h2> Posts </h2>
+    <ul>
+        {% for post in posts %}
+        <li><a href="/posts/{{ post.id }}" class="link-offset-2 link-underline link-underline-opacity-0">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/users/{{ user.id }}/posts/new"><button type="button" class="btn btn-primary btn-sm">Add Post</button></a>
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 """Seed file to make sample data for users db."""
 
-from models import User, db
+from models import User, db, Post
 from app import app
 
 # Create all tables
@@ -22,3 +22,9 @@ db.session.add(david)
 
 # Commit--otherwise, this never gets saved!
 db.session.commit()
+
+# Add posts
+post1 = Post(title='First Post!', content='Oh, hai.', user_id=1)
+post2 = Post(title='Springboard', content='Software Engineering.', user_id=1)
+post3 = Post(title='Second Post!', content='Oh, hai.', user_id=2)
+post4 = Post(title='Third Post!', content='Oh, hai.', user_id=3)

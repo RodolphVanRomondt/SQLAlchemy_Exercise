@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Post {% endblock %}
+{% block heading %} {{ post.title }} {% endblock %}
+{% block body %}
+
+<figure>
+    <blockquote class="blockquote">
+        <p>{{ post.content }}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        By {{ user.first_name }} {{ user.last_name }} <cite title="Source Title"></cite>
+    </figcaption>
+</figure>
+
+<a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+<a href="/posts/{{ post.id }}/edit"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+<a href="/posts/{{ post.id }}/delete"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+
+{% endblock %}

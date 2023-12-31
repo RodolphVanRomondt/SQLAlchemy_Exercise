@@ -10,17 +10,28 @@ h2 {
     font-size: 1rem;
 }
 
-.photo-profile, .text-profile {
+.photo-profile, .text-profile, .posts {
     position: absolute;
 }
 
 .text-profile {
     left: 200px;
-    top: 11rem;
+    top: 7rem;
 }
 
 .photo-profile, img {
     width: 150px;
     height: 150px;
     border-radius: 0.3rem;
+    top: 7rem;
+}
+
+.posts {
+    margin: 25px 0 10px 0;
+    top: 10rem;
+    left: 200px;
+}
+
+form {
+    width: 500px;
 }

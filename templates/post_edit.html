@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Edit Post {% endblock %}
+{% block heading %} Edit Post {% endblock %}
+{% block body %}
+
+<form action="/posts/{{ post.id }}/edit" method="POST">
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+    </div>
+
+    <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+    <button class="btn btn-primary btn-sm">Edit</button>
+</form>
+
+{% endblock %}
