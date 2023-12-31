@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from app import app
-from models import db, User
+from models import db, User, Post
 
 # Use test database and don't clutter tests with SQL
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -23,6 +23,7 @@ class UserViewsTestCase(TestCase):
         """Add sample user."""
 
         User.query.delete()
+        Post.query.delete()
 
         user = User(first_name="TestUser", last_name="Springboard", image_url="www.google.com")
         db.session.add(user)
@@ -30,6 +31,13 @@ class UserViewsTestCase(TestCase):
 
         self.user_id = user.id
         self.user = user
+
+        post = Post(title="First Post", content="Oh, hai.", user_id=1)
+        db.session.add(post)
+        db.session.commit()
+
+        self.post_id = post.id
+        self.post = post
 
     def tearDown(self):
         """Clean up any fouled transaction."""
@@ -46,7 +54,7 @@ class UserViewsTestCase(TestCase):
 
     def test_show_user(self):
         with app.test_client() as client:
-            resp = client.get(f"/users/{self.pet_id}")
+            resp = client.get(f"/users/{self.user_id}")
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
@@ -61,3 +69,19 @@ class UserViewsTestCase(TestCase):
 
             self.assertEqual(resp.status_code, 200)
             self.assertIn('<h1 class="heading"> TestPet2 </h1>', html)
+    
+    def test_post_new(self):
+        with app.test_client() as client:
+            resp = client.get(f"/users/{self.user_id}/posts/new")
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn('Add Post for TestUser Springboard', html)
+    
+    def test_post_details(self):
+        with app.test_client() as client:
+            resp = client.get(f"/posts/{self.post_id}")
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn('By TestUser Springboard', html)

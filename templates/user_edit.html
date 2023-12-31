@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% block title %} Edit {% endblock %}
-{% block heading %} Edit a User {% endblock %}
+{% block heading %} Edit User {% endblock %}
 {% block body %}
 
 <form action="/users/{{ user.id }}/edit" method="POST">
-    <p>
-        First Name
-        <input type="text" name="first_name" placeholder="Enter a first name" required>
-    </p>
-    <p>
-        Last Name
-        <input type="text" name="last_name" placeholder="Enter a last name" required>
-    </p>
-    <p>
-        Image URL
-        <input type="url" name="image_url" placeholder="Provide an image's link" required>
-    </p>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+        <input name="first_name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+        <input name="last_name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Image URL</span>
+        <input name="image_url" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required>
+    </div>
+
     <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
     <button type="button" class="btn btn-primary btn-sm">Save</button>
 </form>
