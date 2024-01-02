@@ -14,8 +14,19 @@
         <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
     </div>
 
-    <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
-    <button class="btn btn-primary btn-sm">Add</button>
+    <div class="tags">
+        {% for tag in tags %}
+        <label>
+            <input type="checkbox" name="{{ tag.name }}">
+            {{ tag.name }}</label>
+        {% endfor %}
+    
+    </div>
+
+    <div class="btn-container">
+        <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+        <button class="btn btn-primary btn-sm">Add</button>
+    </div>
 </form>
 
 {% endblock %}

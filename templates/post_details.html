@@ -10,6 +10,15 @@
     <figcaption class="blockquote-footer">
         By {{ user.first_name }} {{ user.last_name }} <cite title="Source Title"></cite>
     </figcaption>
+    {% if not tags|length %}
+        <p><b>No Tags</b>
+    {% else %}
+            <p><b>Tags</b>:
+    {% endif %}
+        {% for tag in tags %}
+        <a ><button type="button" class="btn btn-primary" style="--bs-btn-padding-y: .1rem; --bs-btn-font-weight:bold; --bs-btn-padding-x: .1rem; --bs-btn-font-size: .7rem;">{{ tag.tags.name }}</button></a>
+        {% endfor %} 
+    </p>
 </figure>
 
 <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>

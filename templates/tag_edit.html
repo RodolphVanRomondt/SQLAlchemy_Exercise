@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Edit Tag {% endblock %}
+{% block heading %} Edit Tag {% endblock %}
+{% block body %}
+
+<form action="/tags/{{ tag.id }}/edit" method="POST">
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    </div>
+
+    <a href="/tags/{{ tag.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+    <button class="btn btn-primary btn-sm">Edit</button>
+</form>
+
+{% endblock %}

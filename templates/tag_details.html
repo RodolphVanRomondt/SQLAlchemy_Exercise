@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Tag {% endblock %}
+{% block heading %} {{ tag.name }} {% endblock %}
+{% block body %}
+
+<ul>
+    {% for post in tag.posts %}
+    <li><a href="/posts/{{ post.id }}" class="link-offset-2 link-underline link-underline-opacity-0">
+        {{ post.title }}
+    </a></li>
+    {% endfor %}
+</ul>
+
+<a href="/tags"><button type="button" class="btn btn-outline-primary btn-sm">Return</button></a>
+<a href="/tags/{{ tag.id }}/edit"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+<a href="/tags/{{ tag.id }}/delete"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+
+{% endblock %}

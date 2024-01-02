@@ -2,10 +2,6 @@ body {
     margin: 25px;
 }
 
-h1 {
-    /* font-size: 2.5rem; */
-}
-
 h2 {
     font-size: 1rem;
 }
@@ -34,4 +30,12 @@ h2 {
 
 form {
     width: 500px;
+}
+
+.tags label {
+    display: block;
+}
+
+.btn-container {
+    margin-top: 15px;
 }

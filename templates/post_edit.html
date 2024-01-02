@@ -7,15 +7,33 @@
 
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Title</label>
-        <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{ post.title }}" required>
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" placeholder="{{ post.content}}" rows="4" required></textarea>
     </div>
 
-    <a href="/users/{{ user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
-    <button class="btn btn-primary btn-sm">Edit</button>
+    <div class="tags">
+        {% for tag in tags %}
+            {% if tag in post.tags %}
+                <label>
+                    <input type="checkbox" class="post_tag" name="{{ tag.name }}" checked>
+                    {{ tag.name }}
+                </label>
+            {% else %}
+                <label>
+                    <input type="checkbox" class="post_tag" name="{{ tag.name }}">
+                    {{ tag.name }}
+                </label>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="btn-container">
+        <a href="/users/{{ post.user.id }}"><button type="button" class="btn btn-outline-primary btn-sm">Cancel</button></a>
+        <button class="btn btn-primary btn-sm">Edit</button>
+    </div>
 </form>
 
 {% endblock %}

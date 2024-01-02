@@ -32,3 +32,19 @@ VALUES
   ('First Post!', 'YALA', 2),
   ('Second Post!', 'YALA', 2),
   ('Third Post!', 'YALA', 2);
+
+CREATE TABLE tags (
+  id SERIAL PRIMARY KEY,
+  name TEXT UNIQUE
+);
+
+INSERT INTO tags(name) VALUES
+  ('Fun'), ('Cool'), ('Perfect');
+
+CREATE TABLE posts_tags (
+  post_id INTEGER REFERENCES posts (id),
+  tag_id INTEGER REFERENCES tags (id)
+);
+
+INSERT INTO posts_tags (post_id, tag_id) VALUES
+  (1, 1), (1, 2), (1, 3);

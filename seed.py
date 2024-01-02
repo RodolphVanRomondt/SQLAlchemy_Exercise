@@ -1,9 +1,12 @@
 """Seed file to make sample data for users db."""
 
-from models import User, db, Post
-from app import app
+from models import User, db, Post, Tag, PostTag
 
 # Create all tables
+
+# clean reset the database
+# db.engine.execute('DROP SCHEMA public CASCADE; CREATE SCHEMA public;')
+# creates tables
 db.drop_all()
 db.create_all()
 
@@ -29,6 +32,28 @@ post4 = Post(title='Third Post!', content='Oh, hai.', user_id=3)
 
 # Add new objects to session
 db.session.add_all([post1, post2, post3, post4])
+
+# Add tags
+tag1 = Tag(name='Fun')
+tag2 = Tag(name='Cool')
+tag3 = Tag(name='Perfect')
+
+# Add new objects to session
+db.session.add_all([tag1, tag2, tag3])
+
+# Commit
+db.session.commit()
+
+# Add posts - tags relationship
+pt1 = PostTag(post_id=1, tag_id=1)
+pt2 = PostTag(post_id=1, tag_id=2)
+pt3 = PostTag(post_id=2, tag_id=3)
+pt4 = PostTag(post_id=3, tag_id=1)
+pt5 = PostTag(post_id=3, tag_id=2)
+pt6 = PostTag(post_id=3, tag_id=3)
+
+# Add new objects to session
+db.session.add_all([pt1, pt2, pt3, pt4, pt5, pt6])
 
 # Commit
 db.session.commit()
